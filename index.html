@@ -8,10 +8,7 @@
 <meta name="generator" content="pandoc" />
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
-<meta http-equiv='cache-control' content='no-cache'> 
-<meta http-equiv='expires' content='0'> 
-<meta http-equiv='pragma' content='no-cache'>
-       
+
 <meta name="author" content="Orsolya Barabas" />
 
 
@@ -176,25 +173,42 @@ pre code {
 
 <div id="section" class="section level2 tabset tabset-fade">
 <h2 class="tabset tabset-fade"></h2>
-<div id="questions-to-jonimyself" class="section level3">
-<h3>Questions to Joni/Myself</h3>
+<div id="questionsnotes-to-jonimyself" class="section level3">
+<h3>Questions/notes to Joni/Myself</h3>
+<p><strong>29.06.2021</strong> - How to open MD5 file: <a href="https://figshare.com/articles/dataset/ptsd2019/14672133?file=28169634" class="uri">https://figshare.com/articles/dataset/ptsd2019/14672133?file=28169634</a></p>
+<ul>
+<li><a href="https://academic.oup.com/gigascience/article/8/7/giz082/5532407">Choi et al. (2020)</a> and <a href="https://academic.oup.com/gigascience/article/8/7/giz082/5532407">Choi et al. (2019) on PRSise-2</a> don’t specify exactly how you decide on the number of p-value thresholds –&gt; do we have to use the same number as the Nievergelt study? They used loads.</li>
+</ul>
+<p><strong>PTSD PRS:</strong> - Nievergelt (2019): calc at intervals of 0.01 from 0.0001 to 1. Best-fit was 0.3 for PTSD and REX as well, adjusted for 5 PCs - <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8222611/">Swart et al.</a> (2021, South African PTSD risk score study): 8 p-value thresholds (0.001, 0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 1). Acc to Bonferroni-correction, p &lt; 0.05/8 = p &lt; 0.00625 - Duncan et al. (2018) - 12 (36, 12 per disorder plus plus 2 for GW sign loci for SCZ and BIP)</p>
+<ul>
+<li>Duncan et al. (2019) - 13 thresholds (general paper on PRS perf in diverse pop)</li>
+</ul>
+<p><strong>Depression PRS</strong> - Wray et al. (2018): 10 thresholds - Coleman et al. (2020): ‘at seven thresholds 21 (external GWAS p &lt; 0.001, 0.05, 0.1, 0.2, 0.3, 0.4 and 0.5) to allow assessment of the spread of association between risk score and MDD’</p>
+<p>gunzip</p>
+<p>table for counts mean summary - in general how many questions answered , drop those who didn’t answer x number of questions replt to lukasz copt markdown and puit in uk biobank folder github- JC will look at that - heterozygosity homozygosity look up Tuesday 1pm Friday 11:30</p>
+<p><strong>26.06.2021</strong></p>
+<p>Note to self: row name has to be T when writing the csv file, so it all has to be redone</p>
 <p><strong>25.06.2021</strong></p>
 <ul>
 <li>can I use this doc for labbook, or maybe github?<br />
-</li>
+–&gt; yes, JC will make notes in google doc</li>
 <li>could we change 1x/week 1h meetings to 2x/week 30min meetings?<br />
-</li>
-<li>how will I merge the two datasets (ancestry plus pheno)?<br />
-</li>
-<li>ukbkings –&gt; try with Joni, some wouldn’t work, not entirely sure about arguments/values<br />
-</li>
+–&gt; yes</li>
+<li>how will I merge the two datasets (ancestry plus pheno)? –&gt; phenotype database with scores, then file that lists Ar ancestry ind, then a file with gen data (PRS plus PC), then load all three and merge inner_join in dplyr</li>
+<li>rename_with issue (not finding it) –&gt; maybe wants function defined in particular way, put error mssg in labbok</li>
+<li>ukbkings: try with Joni, some wouldn’t work, not entirely sure about arguments/values –&gt; Joni said we can do this</li>
 <li><strong>sex</strong> variable –&gt; completely ignored it, will need it later!! Investigate!<br />
-</li>
-<li>What does it mean something is ‘masked’, is it a problem?? –&gt; look into, example: The following object is masked from ‘package:dplyr’:</li>
+–&gt; PRS will have sex already</li>
+<li>What does it mean something is ‘masked’, is it a problem?? –&gt; look into, example: The following object is masked from ‘package:dplyr’:<br />
+–&gt; when loading multiple pck w/ same name function, then function from last loaded one will be active; could also be issue with rename_with, maybe called other package</li>
 </ul>
 </div>
 <div id="timeline" class="section level3">
 <h3>Timeline</h3>
+<p><strong>08.07.2021</strong></p>
+<ul>
+<li>updated R to 3.6.3 by editing the shell script: copied then edited and renamed to Rstudio_on_Rosalind_edited.sh, it worked!</li>
+</ul>
 <p><strong>24.06.2021</strong></p>
 <p><em>On Rosalind:</em></p>
 <ol style="list-style-type: decimal">
@@ -209,17 +223,54 @@ pre code {
 <li>subsetted the 9 depression questions and renamed them, object called Depression_Questions (NA and Prefer not to … removed)</li>
 <li>.csv file of Depression_Questions created and saved (have another look at this with summarytools when avail + do numbers make sense after removing Prefer … -&gt; cross-check with Biobank showcase)</li>
 </ol>
-<p><em>Labbook:</em> - created rmarkdown labbook (24/06)</p>
+<p><em>Labbook:</em></p>
+<ul>
+<li>published labbook on github (25/06)</li>
+<li>created rmarkdown labbook (24/06)</li>
+</ul>
 <p><strong>23.06.2021</strong></p>
 <p>GitHub: account made, course started to become familiar</p>
 </div>
 <div id="meeting-notes" class="section level3">
 <h3>Meeting Notes</h3>
+<p><strong>02.07.2021</strong></p>
+<ul>
+<li><p>gunzip<br />
+</p></li>
+<li><p>alternatives for summarytools: table for counts; mean; summary<br />
+</p></li>
+<li><p>in general how many questions answered? drop those who didn’t answer x number of questions<br />
+</p></li>
+<li><p>reply to Lukasz<br />
+</p></li>
+<li><p>copy markdown and put in uk biobank folder<br />
+</p></li>
+<li><p>github- JC will look at that –&gt; tried what Joni suggested via email, didn’t make a difference<br />
+</p></li>
+<li><p>heterozygosity &amp; homozygosity - look up</p></li>
+<li><p>Tuesday 1pm &amp; Friday 11:30</p></li>
+</ul>
+<p><strong>30.06.2021</strong></p>
+<ul>
+<li>strat based on sex for PTSD</li>
+<li>Look at quintiles based on scores, do those in the 5th have sign higher REX scores than those in 1st?</li>
+<li>out-of-sample validation: don’t have the numbers; we can get away with overfitting slightly as we’re not doing highdim</li>
+<li>power analysis to be done eventually</li>
+<li>to open MD5 file on cluster: gunzip [name of file] will unzip and turn file into a readable file and save automatically</li>
+</ul>
+<p><strong>25.06.2021</strong></p>
+<ul>
+<li>put it on github, or make copy on onedrive</li>
+<li>if you run screen unix on command line, it won’t kill conn if move away from screen</li>
+<li>look at distr of data to see how much missingness there is, bc if you remove someone at depr step, they may have actually had non-miss at ptsd step –&gt; do i want to impute, less than zeros should be set to NA; can calc with NA, but see what it looks like</li>
+<li>JC can provide PRS and PC (based on Afr ind) –&gt; send Joni what thresholds I want for PRS –&gt; install previous version if package wouldn’t install: find on CRAN pages which tells you what it depends on and what it imports, so for example sass0.4 depends on latest R</li>
+<li>or just use base R codes to look through data if package not available</li>
+</ul>
 <p><strong>18.06.2021</strong></p>
 <ul>
 <li>extract all pheno; limit to AFR ancestry</li>
 <li>go through variables then clean</li>
-<li>generate total scores: 1st thing to do is look at howm many ppl are NA on the items i.e. calc how many NAs there are; create total scores for all who answered all the Qs regardless of NA issue</li>
+<li>generate total scores: 1st thing to do is look at how many ppl are NA on the items i.e. calc how many NAs there are; create total scores for all who answered all the Qs regardless of NA issue</li>
 <li>for PTSD: PCl - how many perhaps construct score for 1st 3 Qs and exclude anyone who has answered 1x3 so Not at all x3</li>
 </ul>
 <p><strong>bio_gen_ancestry(project_dir)</strong> - give list of anc afr (AFR) filter this down to just afr ind</p>
@@ -234,6 +285,10 @@ pre code {
 </div>
 <div id="problems" class="section level3">
 <h3>Problems</h3>
+<p><em>08.07.2021</em> - updated Rstudio by editing the shell script, so now I have new R version (3.6.3), but get same error –&gt; emailed Lukasz</p>
+<ul>
+<li>gt and summarytools issue probably bc of below: ‘You are using an old R version so there are no precompiled binaries available for you and you have to install from source, for that you need to have Rtools installed in your system (not in R), you can download it from here <a href="https://cran.r-project.org/bin/windows/Rtools/history.html" class="uri">https://cran.r-project.org/bin/windows/Rtools/history.html</a> Although I would strongly recommend to update R to the latest version (4.0.2)so you can have access to precompiled binaries which are way easier to install.’</li>
+</ul>
 <p><em>24.06.2021</em></p>
 <ul>
 <li><em>rename_with</em> from <strong>dplyr</strong> not working on the cluster, why?</li>
@@ -246,10 +301,11 @@ pre code {
 </div>
 <div id="solutions" class="section level3">
 <h3>Solutions</h3>
-<ol style="list-style-type: decimal">
+<ul>
+<li><p>updated R to 3.6.3 by editing the shell script: copied then edited and renamed to Rstudio_on_Rosalind_edited.sh, it worked!</p></li>
 <li><p><strong>install.packages(“summarytools”, type = “source”</strong> Installs summarytools on windows, install.packages(“summarytools”) didn’t work before. However, didn’t solve it on the cluster, reckon bc it’s not Windows</p></li>
-<li><p>Rtools <a href="https://cran.r-project.org/bin/windows/Rtools/">solution</a> (save text doc, sys.which(“make”) should show path, it did</p></li>
-</ol>
+<li><p>Rtools <a href="https://cran.r-project.org/bin/windows/Rtools/">solution</a> (save text doc, sys.which(“make”) should show path, it did –&gt; this is for windows only</p></li>
+</ul>
 </div>
 <div id="error-messages" class="section level3">
 <h3>Error Messages</h3>
@@ -266,6 +322,24 @@ pre code {
 </div>
 <div id="literature" class="section level3">
 <h3>Literature</h3>
+<ol style="list-style-type: decimal">
+<li><a href="https://www.nature.com/articles/s41467-019-12576-w">Nievergelt et al.,2019: International meta-analysis pf PTSD genome-wide association studies identifies sex- and ancestry-specific genetic risk loci</a></li>
+</ol>
+<p><strong>Intro</strong> - To understand bio mechanism of risk  prevention and mitigation<br />
+- Twin studies: at least some genetic influence on PTSD risk<br />
+- Duncan et al. (2017): 20k, 5k cases  limited sample size so no ind variants exceeded GW sign, but gen corr betw PTSD and other cond like schz demonstrated for the 1st time<br />
+- This study: 23k Eur and 4k Afr cases, 32428 total cases, total sample of 200k<br />
+- GWAS and gene based analysis: GW sign ass involving genes related to dopamine and immune pathways<br />
+- High gen corr betw PTSD and major depr. But some loci likely specific to PTSD<br />
+- Constructed highly sign PRS for PTSD, which is predictive of re-experiencing symptoms in the independent Million Veterans program cohort</p>
+<p><strong>Results</strong> 60 studies - First, ancestry groups consistently defined, primary GWAS the performed separately in the 3 largest ancestry groups (Eur, Afr, Native Am) then meta-analysed across studies and groups<br />
+- Sex-stratified analysis due to prev observed diff betw male and female heritability<br />
+- In UKB cohort male and female heritability not sign diff EUR: 2 independent, genome-wide sign loci mapping to chr 6, and sex-stratified analysis found two additional loci<br />
+- AFR: (4363 cases, 10976 controls): 1 locus overall, plus 1 more in men-only<br />
+- No GW sign ass found in meta-analysis of Eur or Afr women<br />
+- trans-ethnic meta-analysis did not find GW sign hits</p>
+<p><strong>PRS</strong> - UKB as training sample (largest cohort)<br />
+- Analysis strongest at a p-value threshold = 0.3 and showed highly sign in odds to dev PTSD across PTSD quintiles in the PGC1.5 EUA target sample</p>
 </div>
 </div>
 
