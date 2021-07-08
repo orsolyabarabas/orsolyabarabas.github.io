@@ -1,0 +1,261 @@
+---
+title: "Labbook"
+author: "Orsolya Barabas"
+date: "24/06/2021"
+output: html_document
+---
+
+
+```{r clear workspace, include=FALSE}
+rm(list = ls())
+```
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+	cache = FALSE,
+	comment = NA,
+	include = FALSE,
+	prompt = FALSE
+)
+```
+
+```{r Get system date, include=FALSE}
+date = Sys.Date()
+```
+
+
+
+
+## {.tabset .tabset-fade}
+
+### Questions/notes to Joni/Myself
+**29.06.2021**
+- How to open MD5 file: https://figshare.com/articles/dataset/ptsd2019/14672133?file=28169634
+
+- [Choi et al. (2020)](https://academic.oup.com/gigascience/article/8/7/giz082/5532407) and [Choi et al. (2019) on PRSise-2](https://academic.oup.com/gigascience/article/8/7/giz082/5532407) don't specify exactly how you decide on the number of p-value thresholds --> do we have to use the same number as the Nievergelt study? They used loads.
+
+**PTSD PRS:**
+- Nievergelt (2019): calc at intervals of 0.01 from 0.0001 to 1. Best-fit was 0.3 for PTSD and REX as well, adjusted for 5 PCs
+- [Swart et al.](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8222611/) (2021, South African PTSD risk score study): 8 p-value thresholds (0.001, 0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 1). Acc to Bonferroni-correction, p < 0.05/8 = p < 0.00625
+- Duncan et al. (2018) - 12 (36, 12 per disorder plus plus 2 for GW sign loci for SCZ and BIP)
+
+- Duncan et al. (2019) - 13 thresholds (general paper on PRS perf in diverse pop)
+
+**Depression PRS**
+- Wray et al. (2018): 10 thresholds
+- Coleman et al. (2020): 'at seven thresholds
+21 (external GWAS p < 0.001, 0.05, 0.1, 0.2, 0.3, 0.4 and 0.5) to allow assessment of the spread of association between risk score and MDD'
+
+gunzip
+
+table for counts
+mean
+summary
+- in general how many questions answered , drop those who didn't answer x number of questions
+replt to lukasz
+copt markdown and puit in uk biobank folder
+github- JC will look at that
+- heterozygosity homozygosity look up
+Tuesday 1pm 
+Friday 11:30
+
+**26.06.2021**
+
+Note to self: row name has to be T when writing the csv file, so it all has to be redone
+
+
+**25.06.2021**  
+
+- can I use this doc for labbook, or maybe github?  
+--> yes, JC will make notes in google doc
+- could we change 1x/week 1h meetings to 2x/week 30min meetings?  
+--> yes
+- how will I merge the two datasets (ancestry plus pheno)?
+--> phenotype database with scores, then file that lists Ar ancestry ind, then a file with gen data (PRS plus PC), then load all three and merge inner_join in dplyr
+- rename_with issue (not finding it) 
+--> maybe wants function defined in particular way, put error mssg in labbok
+- ukbkings: try with Joni, some wouldn't work, not entirely sure about arguments/values 
+--> Joni said we can do this
+- **sex** variable --> completely ignored it, will need it later!! Investigate!  
+--> PRS will have sex already
+- What does it mean something is 'masked', is it a problem?? --> look into, example: The following object is masked from ‘package:dplyr’:  
+--> when loading multiple pck w/ same name function, then function from last loaded one will be active; could also be issue with rename_with, maybe called other package
+
+### Timeline
+**08.07.2021**
+
+- updated R to 3.6.3 by editing the shell script: copied then edited and renamed to Rstudio_on_Rosalind_edited.sh, it worked!
+
+**24.06.2021**
+
+*On Rosalind:*
+
+1. mkdir Analysis in /scratch/users/k20106222/Orsolya folder
+2. mkdir mkdir Project1__Variables in Analysis folder
+3. set up project directory: Raw Scripts Data
+4. copied ukb10239.csv  ukb10239_field_finder.txt  ukb10239.html to /scratch/users/k20106222/Orsolya/Analysis/Project1__Variables/Raw
+
+**NOTE**: Project__Variables has 2 underscores in its name by accident!
+
+
+*In RStudio*:
+
+1. subsetted the 9 depression questions and renamed them, object called Depression_Questions (NA and Prefer not to ... removed)
+2. .csv file of Depression_Questions created and saved (have another look at this with summarytools when avail + do numbers make sense after removing Prefer ... -> cross-check with Biobank showcase)
+
+
+*Labbook:*
+
+- published labbook on github (25/06)
+- created rmarkdown labbook (24/06)
+
+
+**23.06.2021**
+
+GitHub: account made, course started to become familiar
+
+### Meeting Notes
+**02.07.2021**  
+
+- gunzip  
+- alternatives for summarytools: table for counts; mean; summary  
+- in general how many questions answered? drop those who didn't answer x number of questions  
+- reply to Lukasz  
+- copy markdown and put in uk biobank folder  
+- github- JC will look at that --> tried what Joni suggested via email, didn't make a difference  
+- heterozygosity & homozygosity - look up  
+
+- Tuesday 1pm & Friday 11:30
+
+
+
+
+**30.06.2021**
+
+- strat based on sex for PTSD
+-	Look at quintiles based on scores, do those in the 5th have sign higher REX scores than those in 1st?
+-	out-of-sample validation: don't have the numbers; we can get away with overfitting slightly as we're not doing highdim 
+- power analysis to be done eventually
+- to open MD5 file on cluster: gunzip [name of file] will unzip and turn file into a readable file and save automatically
+
+**25.06.2021**
+
+- put it on github, or make copy on onedrive
+- if you run screen unix on command line, it won't kill conn if move away from screen
+- look at distr of data to see how much missingness there is, bc if you remove someone at depr step, they may have actually had non-miss at ptsd step --> do i want to impute, less than zeros should be set to NA; can calc with NA, but see what it looks like
+- JC can provide PRS and PC (based on Afr ind)
+--> send Joni what thresholds I want for PRS
+--> install previous version if package wouldn't install: find on CRAN pages which tells you what it depends on and what it imports, so for example sass0.4 depends on latest R
+- or just use base R codes to look through data if package not available
+
+**18.06.2021**
+
+- extract all pheno; limit to AFR ancestry
+- go through variables then clean
+- generate total scores: 1st thing to do is look at how many ppl are NA on the items i.e. calc how many NAs there are; create total scores for all who answered all the Qs regardless of NA issue
+- for PTSD: PCl - how many
+perhaps construct score for 1st 3 Qs and exclude anyone who has answered 1x3 so Not at all x3
+
+**bio_gen_ancestry(project_dir)** - give list of anc afr (AFR) filter this down to just afr ind
+
+extract just the phenotype info 0 depr + ptsd on all ind
+then generate ancestry dataframe separately
+then merge them together
+check whether data frames or data tables
+
+***
+*Email from Joni:*
+I took a look at how I scaled the Trouble Concentrating question for the PGC PTSD analyses – I set 1 -> 1, 2 -> 2, 3 -> 4, 4 -> 5 (i.e. I got rid of the central value). I also dropped anyone who didn’t have complete data for all of the feeder questions (but I suggest we make that decision based on missingness patterns in the data for the AFR individuals).
+
+
+
+
+
+### Useful Commands on Rosalind & Rstudio
+
+srun -p brc --pty /bin/bash
+ 
+cd /scratch/users/k20106222/Orsolya/Analysis/Projec                       t1_Variables --> contains 3 folders (on 24/06/21): Data  Raw  Scripts, Raw contains the 3 files I need 
+
+### Problems
+*08.07.2021*
+- updated Rstudio by editing the shell script, so now I have new R version (3.6.3), but get same error --> emailed Lukasz
+
+- gt and summarytools issue probably bc of below:
+'You are using an old R version so there are no precompiled binaries available for you and you have to install from source, for that you need to have Rtools installed in your system (not in R), you can download it from here
+https://cran.r-project.org/bin/windows/Rtools/history.html
+Although I would strongly recommend to update R to the latest version (4.0.2)so you can have access to precompiled binaries which are way easier to install.'
+
+
+*24.06.2021*
+
+- *rename_with* from **dplyr** not working on the cluster, why?
+- Rtools not working on my windows --> now solved
+- Google says have to install rtools to get gt -->didn't work, need gt for pretty tables
+
+remotes::install_github('rstudio/sass') -->not installing
+
+install.packages("rtools") -->not installing
+
+install.packages("gt") -->not installing
+
+### Solutions
+
+- updated R to 3.6.3 by editing the shell script: copied then edited and renamed to Rstudio_on_Rosalind_edited.sh, it worked!
+
+- **install.packages("summarytools", type = "source"**
+Installs summarytools on windows, install.packages("summarytools") didn't work before. However, didn't solve it on the cluster, reckon bc it's not Windows
+
+- Rtools [solution](https://cran.r-project.org/bin/windows/Rtools/) (save text doc, sys.which("make") should show path, it did --> this is for windows only
+
+
+### Error Messages
+
+1. ERROR: lazy loading failed for package ‘sass’
+* removing ‘/users/k20106222/R/x86_64-pc-linux-gnu-library/3.6-singularity/sass’
+installation of package ‘/tmp/RtmpXvcJ0b/file67e65ff7f825/sass_0.4.0.9000.tar.gz’ had non-zero exit status
+
+2. install.packages("rtools")
+Installing package into ‘/users/k20106222/R/x86_64-pc-linux-gnu-library/3.6-singularity’
+(as ‘lib’ is unspecified)
+Warning in install.packages :
+  package ‘rtools’ is not available (for R version 3.6.2)
+
+3. install.packages("gt")
+Installing package into ‘/users/k20106222/R/x86_64-pc-linux-gnu-library/3.6-singularity’
+(as ‘lib’ is unspecified)
+Warning in install.packages :
+  package ‘gt’ is not available (for R version 3.6.2)
+  
+  
+### Literature
+1. [Nievergelt et al.,2019: International meta-analysis pf PTSD genome-wide association studies identifies sex- and ancestry-specific genetic risk loci](https://www.nature.com/articles/s41467-019-12576-w)
+
+**Intro**
+-	To understand bio mechanism of risk  prevention and mitigation  
+-	Twin studies: at least some genetic influence on PTSD risk  
+-	Duncan et al. (2017): 20k, 5k cases  limited sample size so no ind variants exceeded GW sign, but gen corr betw PTSD and other cond like schz demonstrated for the 1st time  
+-	This study: 23k Eur and 4k Afr cases, 32428 total cases, total sample of 200k  
+-	GWAS and gene based analysis: GW sign ass involving genes related to dopamine and immune pathways  
+-	High gen corr betw PTSD and major depr. But some loci likely specific to PTSD  
+-	Constructed highly sign PRS for PTSD, which is predictive of re-experiencing symptoms in the independent Million Veterans program cohort  
+
+
+**Results**
+60 studies
+-	First, ancestry groups consistently defined, primary GWAS the performed separately in the 3 largest ancestry groups (Eur, Afr, Native Am) then meta-analysed across studies and groups  
+-	Sex-stratified analysis due to prev observed diff betw male and female heritability  
+-	In UKB cohort male and female heritability not sign diff
+EUR: 2 independent, genome-wide sign loci mapping to chr 6, and sex-stratified analysis found two additional loci  
+- AFR: (4363 cases, 10976 controls): 1 locus overall, plus 1 more in men-only  
+- No GW sign ass found in meta-analysis of Eur or Afr women  
+- trans-ethnic meta-analysis did not find GW sign hits    
+
+**PRS**
+- UKB as training sample (largest cohort)  
+-	Analysis strongest at a p-value threshold = 0.3 and showed highly sign in odds to dev PTSD across PTSD quintiles in the PGC1.5 EUA target sample  
+
+
+
+
