@@ -184,8 +184,6 @@ pre code {
 <li>Duncan et al. (2019) - 13 thresholds (general paper on PRS perf in diverse pop)</li>
 </ul>
 <p><strong>Depression PRS</strong> - Wray et al. (2018): 10 thresholds - Coleman et al. (2020): ‘at seven thresholds 21 (external GWAS p &lt; 0.001, 0.05, 0.1, 0.2, 0.3, 0.4 and 0.5) to allow assessment of the spread of association between risk score and MDD’</p>
-<p>gunzip</p>
-<p>table for counts mean summary - in general how many questions answered , drop those who didn’t answer x number of questions replt to lukasz copt markdown and puit in uk biobank folder github- JC will look at that - heterozygosity homozygosity look up Tuesday 1pm Friday 11:30</p>
 <p><strong>26.06.2021</strong></p>
 <p>Note to self: row name has to be T when writing the csv file, so it all has to be redone</p>
 <p><strong>25.06.2021</strong></p>
@@ -233,22 +231,28 @@ pre code {
 </div>
 <div id="meeting-notes" class="section level3">
 <h3>Meeting Notes</h3>
+<p><strong>09.07.2021</strong></p>
+<ul>
+<li><p>total score multiplied by 9 and div by nr of q they answered</p></li>
+<li><p>distr of final score, should be rel normally dist, bit it might be that a lot have 9, abs min poss, how do we deal with that</p></li>
+<li><p>zero-inflated poisson if lots of 9s possibly</p></li>
+<li><p>either replace all with mean, or pro-rate</p></li>
+</ul>
 <p><strong>02.07.2021</strong></p>
 <ul>
-<li><p>gunzip<br />
-</p></li>
-<li><p>alternatives for summarytools: table for counts; mean; summary<br />
-</p></li>
-<li><p>in general how many questions answered? drop those who didn’t answer x number of questions<br />
-</p></li>
-<li><p>reply to Lukasz<br />
-</p></li>
-<li><p>copy markdown and put in uk biobank folder<br />
-</p></li>
-<li><p>github- JC will look at that –&gt; tried what Joni suggested via email, didn’t make a difference<br />
-</p></li>
-<li><p>heterozygosity &amp; homozygosity - look up</p></li>
-<li><p>Tuesday 1pm &amp; Friday 11:30</p></li>
+<li>gunzip<br />
+</li>
+<li>alternatives for summarytools: table for counts; mean; summary<br />
+</li>
+<li>in general how many questions answered? drop those who didn’t answer x number of questions<br />
+</li>
+<li>reply to Lukasz –&gt; done, Rstudio updates, gt and summarytools still not running, sent error message to Lukasz</li>
+<li>copy markdown and put in uk biobank folder<br />
+</li>
+<li>github- JC will look at that –&gt; tried what Joni suggested via email, didn’t make a difference –&gt; now solved 8/7</li>
+<li>heterozygosity &amp; homozygosity - look up<br />
+</li>
+<li>Tuesday 1pm &amp; Friday 11:30</li>
 </ul>
 <p><strong>30.06.2021</strong></p>
 <ul>
