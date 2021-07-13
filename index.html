@@ -183,7 +183,7 @@ pre code {
 <ul>
 <li>Duncan et al. (2019) - 13 thresholds (general paper on PRS perf in diverse pop)</li>
 </ul>
-<p><strong>Depression PRS</strong> - Wray et al. (2018): 10 thresholds - Coleman et al. (2020): ‘at seven thresholds 21 (external GWAS p &lt; 0.001, 0.05, 0.1, 0.2, 0.3, 0.4 and 0.5) to allow assessment of the spread of association between risk score and MDD’</p>
+<p><strong>Depression PRS</strong> - Wray et al. (2018): 10 thresholds - Coleman et al. (2020): ‘at seven thresholds’ 21 (external GWAS p &lt; 0.001, 0.05, 0.1, 0.2, 0.3, 0.4 and 0.5) to allow assessment of the spread of association between risk score and MDD’</p>
 <p><strong>26.06.2021</strong></p>
 <p>Note to self: row name has to be T when writing the csv file, so it all has to be redone</p>
 <p><strong>25.06.2021</strong></p>
@@ -203,6 +203,7 @@ pre code {
 </div>
 <div id="timeline" class="section level3">
 <h3>Timeline</h3>
+<p><strong>13.07.2021</strong> - removed all that contain NA –&gt; this is fine because NAs are present consistently, i.e. person didn’t answer any of the depr questions. Resulting data frame: ppl who either answered -818 (Prefer not to …) or 1/2/3/4</p>
 <p><strong>08.07.2021</strong></p>
 <ul>
 <li>updated R to 3.6.3 by editing the shell script: copied then edited and renamed to Rstudio_on_Rosalind_edited.sh, it worked!</li>
@@ -231,6 +232,22 @@ pre code {
 </div>
 <div id="meeting-notes" class="section level3">
 <h3>Meeting Notes</h3>
+<p><strong>13.07.2021</strong></p>
+<ul>
+<li>update copy of rmarkdown on Rosalind<br />
+</li>
+<li>push update of labbook<br />
+</li>
+<li>recode -818 to NA and look at how many NAs, drop five or more NAs<br />
+</li>
+<li>if responded to 5 or more then set total as NA<br />
+</li>
+<li>number of NAs in extra col for each row<br />
+</li>
+<li>calc score: score mult by 9 divided by 9- number of NAs<br />
+</li>
+<li>Fri 11:30</li>
+</ul>
 <p><strong>09.07.2021</strong></p>
 <ul>
 <li><p>total score multiplied by 9 and div by nr of q they answered</p></li>
