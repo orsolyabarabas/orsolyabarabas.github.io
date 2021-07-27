@@ -30,6 +30,7 @@ date = Sys.Date()
 ## {.tabset .tabset-fade}
 
 ### Questions/notes to Joni/Myself
+ 
 **29.06.2021**
 - How to open MD5 file: https://figshare.com/articles/dataset/ptsd2019/14672133?file=28169634
 
@@ -44,21 +45,9 @@ date = Sys.Date()
 
 **Depression PRS**
 - Wray et al. (2018): 10 thresholds
-- Coleman et al. (2020): 'at seven thresholds
+- Coleman et al. (2020): 'at seven thresholds'
 21 (external GWAS p < 0.001, 0.05, 0.1, 0.2, 0.3, 0.4 and 0.5) to allow assessment of the spread of association between risk score and MDD'
 
-gunzip
-
-table for counts
-mean
-summary
-- in general how many questions answered , drop those who didn't answer x number of questions
-replt to lukasz
-copt markdown and puit in uk biobank folder
-github- JC will look at that
-- heterozygosity homozygosity look up
-Tuesday 1pm 
-Friday 11:30
 
 **26.06.2021**
 
@@ -83,6 +72,10 @@ Note to self: row name has to be T when writing the csv file, so it all has to b
 --> when loading multiple pck w/ same name function, then function from last loaded one will be active; could also be issue with rename_with, maybe called other package
 
 ### Timeline
+**13.07.2021**
+- removed all that contain NA --> this is fine because NAs are present consistently, i.e. person didn't answer any of the depr questions. Resulting data frame: ppl who either answered -818 (Prefer not to ...) or 1/2/3/4
+
+
 **08.07.2021**
 
 - updated R to 3.6.3 by editing the shell script: copied then edited and renamed to Rstudio_on_Rosalind_edited.sh, it worked!
@@ -116,16 +109,49 @@ Note to self: row name has to be T when writing the csv file, so it all has to b
 GitHub: account made, course started to become familiar
 
 ### Meeting Notes
+
+**26.07.2021**
+
+- wrap up analysis before start of August  
+- first draft 23rd Aug  
+- files for PRS plus PC for Afr. ind., read into R, merge with phenotype data frame and then run linear regr looking at effects of each polygenic risk score on depr., extract info and put into tables  
+- take a look at papers and look at what they show  
+- are associations significant? then further question - more challenging: is one of the cores more imp than others, does it capture things more --> not easy Q to answer, bc of diff. in power --> could say that doesn't matter as Q asked about specific cohort  
+- don't go down too far down the road of 'are these quantitatively diff.',say is there a material diffidence in variance explained as more interest question: if you limit target data set do you see diff between diff Afr cohorts i.e. Caribbean and Afr Am --> easiest way to answer is to fit interaction term: root ppl into Afr and Afr Car ancestry --> plot principal components, you should see them separated, then create a var that is essentially afr anc vs not, ie 0 vs 1, then include that as a term in regression then you can fit an interaction term  
+- basic model: PRS, set of PC. Then you add in interaction term between polygenic  
+- asking : is ass betwen  
+- poster: extract tales and figures  
+- break down into milestones   
+- at basic need association test, ideally bring in interaction term  
+
+
+**13.07.2021**  
+
+- update copy of rmarkdown on Rosalind  
+- push update of labbook  
+- recode -818 to NA and look at how many NAs, drop five or more NAs  
+- if responded to 5 or more then set total as NA  
+- number of NAs in extra col for each row  
+- calc score: score mult by 9 divided by 9- number of NAs  
+- Fri 11:30  
+
+**09.07.2021**
+
+- total score multiplied by 9 and div by nr of q they answered
+- distr of final score, should be rel normally dist, bit it might be that a lot have 9, abs min poss, how do we deal with that
+- zero-inflated poisson if lots of 9s possibly
+
+- either replace all with mean, or pro-rate
+
 **02.07.2021**  
 
 - gunzip  
 - alternatives for summarytools: table for counts; mean; summary  
 - in general how many questions answered? drop those who didn't answer x number of questions  
-- reply to Lukasz  
+- reply to Lukasz --> done, Rstudio updates, gt and summarytools still not running, sent error message to Lukasz
 - copy markdown and put in uk biobank folder  
-- github- JC will look at that --> tried what Joni suggested via email, didn't make a difference  
+- github- JC will look at that --> tried what Joni suggested via email, didn't make a difference --> now solved 8/7
 - heterozygosity & homozygosity - look up  
-
 - Tuesday 1pm & Friday 11:30
 
 
