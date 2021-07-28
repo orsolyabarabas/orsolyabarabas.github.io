@@ -114,7 +114,7 @@ GitHub: account made, course started to become familiar
 
 - wrap up analysis before start of August  
 - first draft 23rd Aug  
-- files for PRS plus PC for Afr. ind., read into R, merge with phenotype data frame and then run linear regr looking at effects of each polygenic risk score on depr., extract info and put into tables  
+- files for PRS plus PC for Afr. ind., read into R, merge with phenotype data frame and then run linear regression looking at effects of each polygenic risk score on depr., extract info and put into tables  
 - take a look at papers and look at what they show  
 - are associations significant? then further question - more challenging: is one of the cores more imp than others, does it capture things more --> not easy Q to answer, bc of diff. in power --> could say that doesn't matter as Q asked about specific cohort  
 - don't go down too far down the road of 'are these quantitatively diff.',say is there a material diffidence in variance explained as more interest question: if you limit target data set do you see diff between diff Afr cohorts i.e. Caribbean and Afr Am --> easiest way to answer is to fit interaction term: root ppl into Afr and Afr Car ancestry --> plot principal components, you should see them separated, then create a var that is essentially afr anc vs not, ie 0 vs 1, then include that as a term in regression then you can fit an interaction term  
